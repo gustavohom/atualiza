@@ -1,0 +1,63 @@
+<%- include('partials/header', { pageTitle: pageTitle, activePage: activePage, contactInfo: contactInfo }) %>
+
+<!-- Hero Section -->
+<section class="bg-cover bg-center min-h-[60vh] text-white relative flex items-center justify-center" style="background-image: url('/images/hero-bg.jpg');" data-aos="fade-in" data-aos-duration="1000">
+    <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+    <div class="container mx-auto px-6 text-center z-10 relative">
+        <h1 class="text-4xl md:text-6xl font-bold font-heading mb-4 leading-tight" data-aos="fade-down" data-aos-delay="200">Atualiza Comunicação Visual</h1>
+        <p class="text-xl md:text-2xl mb-8" data-aos="fade-up" data-aos-delay="400">Transformando ideias em impacto visual.</p>
+        <div data-aos="fade-up" data-aos-delay="600">
+            <a href="/portfolio" class="bg-atualiza-primary hover:bg-opacity-90 text-white font-bold py-3 px-8 rounded text-lg mr-4 shadow-md hover:shadow-lg transition duration-300 inline-block mb-2 md:mb-0">Veja Nossos Projetos</a>
+            <a href="/contato" class="bg-atualiza-secondary hover:bg-opacity-90 text-atualiza-dark font-bold py-3 px-8 rounded text-lg shadow-md hover:shadow-lg transition duration-300 inline-block">Solicite um Orçamento</a>
+        </div>
+    </div>
+</section>
+
+<!-- Sobre Nós (Breve) -->
+<section class="py-16 lg:py-24 bg-white">
+    <div class="container mx-auto px-6 text-center" data-aos="fade-up">
+        <h2 class="text-3xl lg:text-4xl font-bold font-heading mb-6 text-atualiza-dark">Quem Somos</h2>
+        <p class="text-lg text-gray-700 max-w-3xl mx-auto mb-8 leading-relaxed">
+            A Atualiza Comunicação Visual é especialista em fachadas, letreiros, banners, adesivos, sinalização interna e externa e muito mais. Combinamos criatividade, tecnologia de ponta e materiais de alta qualidade para entregar soluções visuais que realmente destacam a sua marca e comunicam sua mensagem.
+        </p>
+        <a href="/contato" class="text-atualiza-primary hover:text-atualiza-secondary font-semibold text-lg transition duration-300 group">
+            Saiba mais ou peça um orçamento
+            <span class="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
+        </a>
+    </div>
+</section>
+
+<!-- Destaques do Portfólio -->
+<section class="py-16 lg:py-24 bg-atualiza-light">
+    <div class="container mx-auto px-6">
+        <h2 class="text-3xl lg:text-4xl font-bold font-heading text-center mb-12 text-atualiza-dark" data-aos="fade-up">Nossos Destaques</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+            <% portfolioHighlights.forEach((item, index) => { %>
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group"
+                     data-aos="fade-up"
+                     data-aos-delay="<%= index * 100 %>">
+                    <a href="<%= item.image %>"
+                       class="glightbox"
+                       data-gallery="portfolio-highlights"
+                       data-title="<%= item.title %>"
+                       data-description="<%= item.description %>">
+                        <img src="<%= item.image %>" alt="<%= item.title %>" class="w-full h-56 object-cover group-hover:opacity-90 transition-opacity duration-300">
+                   </a>
+                   <div class="p-6">
+                       <h3 class="font-bold font-heading text-xl mb-2 text-atualiza-dark"><%= item.title %></h3>
+                       <p class="text-gray-600 text-sm mb-4 uppercase tracking-wider"><%= item.category %></p>
+                       <a href="/portfolio#projeto-<%= item.id %>" class="text-atualiza-primary hover:text-atualiza-secondary font-semibold mt-2 inline-block group">
+                           Ver Detalhes
+                           <span class="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
+                        </a>
+                   </div>
+                </div>
+            <% }); %>
+        </div>
+        <div class="text-center mt-12" data-aos="fade-up">
+             <a href="/portfolio" class="bg-atualiza-dark hover:bg-opacity-80 text-white font-bold py-3 px-8 rounded text-lg shadow hover:shadow-md transition duration-300">Ver Portfólio Completo</a>
+        </div>
+    </div>
+</section>
+
+<%- include('partials/footer', { contactInfo: contactInfo }) %>

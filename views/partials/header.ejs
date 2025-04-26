@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= pageTitle %></title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS (Gerado) -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- GLightbox CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Estilo Base com Fontes -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif; /* Fonte padrão definida via Tailwind */
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif; /* Fonte de título definida via Tailwind */
+        }
+    </style>
+</head>
+<body class="bg-atualiza-light text-atualiza-dark font-sans">
+    <%- include('navigation', { activePage: activePage, contactInfo: contactInfo }) %>
+    <main>

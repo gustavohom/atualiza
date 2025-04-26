@@ -1,0 +1,36 @@
+<%- include('partials/header', { pageTitle: pageTitle, activePage: activePage, contactInfo: contactInfo }) %>
+
+<div class="container mx-auto px-6 py-16 lg:py-24" data-aos="fade-in">
+    <h1 class="text-4xl lg:text-5xl font-bold font-heading text-center mb-12 lg:mb-16 text-atualiza-dark">Nosso Portfólio</h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+        <% portfolioItems.forEach((item, index) => { %>
+            <div class="portfolio-item bg-white rounded-lg shadow-lg overflow-hidden transform hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group"
+                 data-category="<%= item.category %>"
+                 id="projeto-<%= item.id %>"
+                 data-aos="fade-up"
+                 data-aos-delay="<%= index * 50 %>"> 
+
+                <a href="<%= item.image %>"
+                   class="glightbox"
+                   data-gallery="portfolio-gallery"
+                   data-title="<%= item.title %> - <%= item.category %>"
+                   data-description="<%= item.description %>">
+                    <img src="<%= item.image %>" alt="<%= item.title %>" class="w-full h-64 object-cover group-hover:opacity-90 transition-opacity duration-300 cursor-pointer">
+                </a>
+
+                <div class="p-6">
+                    <h3 class="font-bold font-heading text-xl mb-2 text-atualiza-dark"><%= item.title %></h3>
+                    <p class="text-gray-600 text-sm mb-4 uppercase tracking-wider"><%= item.category %></p>
+                    <p class="text-gray-700 text-base leading-relaxed"><%= item.description %></p>
+                </div>
+            </div>
+        <% }); %>
+
+         <% if (portfolioItems.length === 0) { %>
+            <p class="text-center text-gray-600 col-span-full text-lg" data-aos="fade-up">Nenhum projeto encontrado no momento.</p>
+        <% } %>
+    </div>
+</div>
+
+<%- include('partials/footer', { contactInfo: contactInfo }) %>

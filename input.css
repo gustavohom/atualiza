@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Você pode adicionar CSS personalizado aqui, se necessário */
+body {
+    @apply font-sans; /* Exemplo: Definindo uma fonte padrão */
+}
