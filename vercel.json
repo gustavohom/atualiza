@@ -2,21 +2,11 @@
   "version": 2,
   "builds": [
     {
-      "src": "server.js", // Seu arquivo de entrada
-      "use": "@vercel/node" // Builder para Node.js
+      "src": "server.js",
+      "use": "@vercel/node"
     }
   ],
   "routes": [
-    // Serve arquivos estáticos diretamente pela Vercel (mais eficiente)
-    {
-      "src": "/((?!api/.*$).*)", // Regex: Qualquer coisa que NÃO seja /api/
-      "dest": "/public/$1",     // Tenta servir de /public primeiro
-      "continue": true          // Se não encontrar, continua para a próxima rota
-    },
-    // Se não for um arquivo estático conhecido, envia para o seu servidor Express
-    {
-      "src": "/(.*)",
-      "dest": "server.js" // Todas as outras requisições vão para server.js
-    }
+    { "src": "/(.*)", "dest": "server.js" }
   ]
 }
