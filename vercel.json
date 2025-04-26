@@ -1,25 +1,22 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "server.js", // Seu arquivo de entrada do servidor
-        "use": "@vercel/node", // Especifica o builder para Node.js
-        "config": {
-           // Opcional: Pode ajudar a incluir explicitamente
-           // "includeFiles": ["views/**", "public/**"]
-        }
-      }
-    ],
-    "routes": [
-      // Opcional: Servir arquivos estáticos explicitamente pode ajudar
-      // { "src": "/css/(.*)", "dest": "/public/css/$1" },
-      // { "src": "/images/(.*)", "dest": "/public/images/$1" },
-      // { "src": "/js/(.*)", "dest": "/public/js/$1" },
-  
-      // Rota principal: Envia todas as outras requisições para o seu servidor
-      {
-        "src": "/(.*)",
-        "dest": "server.js"
-      }
-    ]
-  }
+  "version": 2,
+  "builds": [
+    {
+      "src": "server.js", // Seu arquivo de entrada
+      "use": "@vercel/node" // Builder para Node.js
+    }
+  ],
+  "routes": [
+    // Serve arquivos estáticos diretamente pela Vercel (mais eficiente)
+    {
+      "src": "/((?!api/.*$).*)", // Regex: Qualquer coisa que NÃO seja /api/
+      "dest": "/public/$1",     // Tenta servir de /public primeiro
+      "continue": true          // Se não encontrar, continua para a próxima rota
+    },
+    // Se não for um arquivo estático conhecido, envia para o seu servidor Express
+    {
+      "src": "/(.*)",
+      "dest": "server.js" // Todas as outras requisições vão para server.js
+    }
+  ]
+}
